@@ -11,7 +11,7 @@ provider "aws" {
 }
 
 module "static-site" {
-  source = "./modules/static-site"
+  source = "../../modules/static-site"
 
   bucket_name = "odan-lambda-edge-sandbox"
 }
