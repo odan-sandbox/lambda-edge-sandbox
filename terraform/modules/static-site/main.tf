@@ -42,6 +42,12 @@ resource "aws_cloudfront_distribution" "this" {
     min_ttl                = 0
     default_ttl            = 3600
     max_ttl                = 86400
+
+
+    lambda_function_association {
+      event_type = "viewer-request"
+      lambda_arn = "${data.aws_lambda_function.basic_auth.arn}:${var.basic_auth_function_version}"
+    }
   }
 
   restrictions {
@@ -53,6 +59,7 @@ resource "aws_cloudfront_distribution" "this" {
   viewer_certificate {
     cloudfront_default_certificate = true
   }
+
 }
 
 resource "aws_cloudfront_origin_access_identity" "this" {

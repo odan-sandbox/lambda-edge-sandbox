@@ -6,6 +6,7 @@ terraform {
   }
 }
 
+
 provider "aws" {
   region = "ap-northeast-1"
 }
@@ -14,4 +15,7 @@ module "static-site" {
   source = "../../modules/static-site"
 
   bucket_name = "odan-lambda-edge-sandbox"
+
+  basic_auth_function_name    = "lambda-edge-basic-auth"
+  basic_auth_function_version = "1"
 }
