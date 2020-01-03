@@ -21,7 +21,7 @@ module "lambda-edge" {
 
   filename      = data.archive_file.lambda.output_path
   function_name = "basic_auth"
-  handler       = "lambda.basic_auth"
+  handler       = "lambda.basicAuth"
   runtime       = "nodejs10.x"
 }
 

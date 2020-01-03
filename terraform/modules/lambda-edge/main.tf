@@ -20,6 +20,11 @@ resource "aws_iam_role" "lambda-edge" {
   assume_role_policy = data.aws_iam_policy_document.lambda-assume-role.json
 }
 
+resource "aws_iam_role_policy_attachment" "lambda-edge" {
+  role       = aws_iam_role.lambda-edge.name
+  policy_arn = "arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+}
+
 resource "aws_lambda_function" "lambda" {
   provider = aws.virginia
 
@@ -32,4 +37,6 @@ resource "aws_lambda_function" "lambda" {
   role = aws_iam_role.lambda-edge.arn
 
   runtime = var.runtime
+
+  publish = true
 }
