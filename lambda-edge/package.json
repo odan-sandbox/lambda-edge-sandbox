@@ -4,7 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "devDependencies": {
-    "@types/express": "^4.17.2",
+    "@types/aws-lambda": "^8.10.39",
     "@types/node": "^13.1.2",
     "@typescript-eslint/eslint-plugin": "^2.14.0",
     "@typescript-eslint/parser": "^2.14.0",
@@ -14,11 +14,9 @@
     "prettier": "^1.19.1",
     "typescript": "^3.7.4"
   },
-  "dependencies": {
-    "express": "^4.17.1",
-    "express-basic-auth": "^1.2.0"
-  },
+  "dependencies": {},
   "scripts": {
+    "prebuild": "rm -rf dist",
     "build": "tsc",
     "start": "node dist/app.js",
     "lint": "eslint --ext .js,.ts --ignore-path .gitignore ."

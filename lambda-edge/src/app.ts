@@ -1,7 +1,7 @@
 import express from "express";
 import basicAuth from "express-basic-auth";
 
-const app = express();
+export const app = express();
 
 app.use(
   basicAuth({
