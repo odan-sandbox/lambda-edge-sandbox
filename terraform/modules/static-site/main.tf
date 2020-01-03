@@ -44,6 +44,7 @@ resource "aws_cloudfront_distribution" "this" {
     max_ttl                = 86400
 
 
+    // lambda_function_association は ignore_changes にしてもいいかも 
     lambda_function_association {
       event_type = "viewer-request"
       lambda_arn = "${data.aws_lambda_function.basic_auth.arn}:${var.basic_auth_function_version}"

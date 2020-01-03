@@ -26,6 +26,7 @@ resource "aws_iam_role_policy_attachment" "lambda-edge" {
 }
 
 resource "aws_lambda_function" "lambda" {
+  // lambda edge は virginia 限定
   provider = aws.virginia
 
   function_name = var.function_name
@@ -38,5 +39,7 @@ resource "aws_lambda_function" "lambda" {
 
   runtime = var.runtime
 
+  // publish = true にすると apply するたびにバージョンが発行される
+  // このバージョンが cloudfront に lambda edge を設定する時に必須
   publish = true
 }
